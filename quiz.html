@@ -119,11 +119,13 @@
             <input class="spac" type="radio" id="q10_option5" name="q10" value="1"> <label for="q10_option3">Completely disagree</label><br>
         </form>
     
-            <button class="goback" type="button" onclick="calculateScore()">Calculate Score</button>
+            <button class="goback" type="button" onclick="calculateScore()"><a class="final" href="#dc">Calculate Score</a></button>
     
-        <p class="sakor">Score: <span id="score">0</span></p>
+        <p class="sakor" id="dc">Score: <span id="score">0</span></p>
+        <button class="goback"><a class="final" href="#advi">Check medications</a></button>
+        
+       
 
-        <p id="advice"></p>
         
     
 
@@ -136,8 +138,15 @@
     </ul>
     </div>
     </div>
+    <div class="advi">
+        <P class="dheading" id="advi">Depression Medications</P>
+        <p class="note" id="note"></p>
+        <p class="advice" id = "demo"></p>
+        <p class="conclusion">You can find nearest doctors using <a href="https://www.practo.com/ahmedabad/doctors-for-depression-counselling">find doctors button above or by clicking here</a></p>
+    </div>
 
 <script>
+
         burger = document.querySelector('.burger')
         navbar = document.querySelector('.navbar')
         navlist = document.querySelector('.navlist')
@@ -165,13 +174,28 @@
         const totalScore = q1Value+q2Value+q3Value+q4Value+q5Value+q6Value+q7Value+q8Value+q9Value+q10Value;
         // Display the total score
         document.getElementById("score").textContent = totalScore;
-        }
+        let advice;
+        let note;
         if (totalScore<=10){
-        console.log("Your answers suggest you may not be suffering from depression. Still if you feel something isnU+00027t quite right, we recommend you schedule an appointment with your doctor. If you need help finding a mental health professional, we suggest that you reach out to emergency mental health resources using the find doctors button on the navigation bar.");
+            note="NOTE:-THIS IS NOT A DIAGNOSTIC TEST FOR BETTER MEDICATION CONSULT A PSYCHIATRIST";
+            advice ="While your symptoms are likely not having a major impact on your life, it may still be helpful to monitor them. It is recommended that you retake this test once every two weeks.While minimal or mild depression may not require the same level of intervention as more severe forms of depression, it is still important to address these symptoms and seek support when needed. Often, making lifestyle changes, practicing self-care, seeking support from friends and family, and engaging in activities that bring joy and fulfillment can help alleviate mild depressive symptoms.If you or someone you know is experiencing minimal or mild depression, it can be helpful to consult with a mental health professional or a healthcare provider. They can offer guidance, provide coping strategies, and determine whether any treatment or therapy is necessary to prevent the symptoms from worsening. It's always a good idea to seek help and support when dealing with any level of depression to improve overall well-being.";
+        }else if (totalScore>10 && totalScore<=20){
+            note="NOTE:-THIS IS NOT A DIAGNOSTIC TEST FOR BETTER MEDICATION CONSULT A PSYCHIATRIST";
+            advice = "While your symptoms are likely not having a major impact on your life, it may still be helpful to monitor them. It is recommended that you retake this test once every two weeksIt's essential to remember that mild depression can still have a negative impact on your overall well-being and daily life. If you or someone you know is experiencing these symptoms, it's crucial to seek help from a mental health professional. They can provide a proper diagnosis, treatment options, and support tailored to the individual's needs.Treatment for mild depression often includes psychotherapy (talk therapy), medication, lifestyle changes (such as regular exercise, a balanced diet, and adequate sleep), and support from friends and family. The specific approach may vary from person to person, so it's essential to consult with a healthcare provider to determine the most appropriate treatment plan. Early intervention can significantly improve the prognosis for individuals with mild depression.";
+        }else if(totalScore>20 && totalScore<=30){
+            note="NOTE:-THIS IS NOT A DIAGNOSTIC TEST FOR BETTER MEDICATION CONSULT A PSYCHIATRIST";
+            advice="While this is not a diagnostic test, it may be worthwhile to start a conversation with your doctor or mental health professional. Finding the right treatment plan can help you on the path toward feeling better. It is also recommended that you monitor your symptoms by retaking this test once every two weeks.";
+        }else if(totalScore>30 && totalScore<=40){
+            note="NOTE:-THIS IS NOT A DIAGNOSTIC TEST FOR BETTER MEDICATION CONSULT A PSYCHIATRIST";
+            advice="While this is not a diagnostic test, people who scored similar to you typically receive a diagnosis of major depression and have sought professional treatment for this disorder.It may be beneficial for you to consult your doctor or mental health professional immediately.Cognitive behavioral therapy (CBT) is a form of therapy that is often used to treat depression. CBT focuses on identifying negative thoughts that contribute to symptoms of depression. Once these thought patterns have been identified, people then work to replace those thoughts with more positive and realistic ways of thinking.CBT tends to be a shorter-term approach to therapy, so it may involve somewhere between 10 and 20 sessions. During this time, you will also be expected to do homework outside of your therapy sessions. This might involve practicing skills that you have learned during therapy as well as keeping a record of your symptoms, thoughts, and behaviors";
+        }else {
+            note="NOTE:-THIS IS NOT A DIAGNOSTIC TEST FOR BETTER MEDICATION CONSULT A PSYCHIATRIST";
+            advice="While this is not a diagnostic test, people who scored similar to you typically receive a diagnosis of major depression and have sought professional treatment for this disorder. It may be beneficial for you to consult your doctor or mental health professional immediately.";
         }
-        else {
-        console.log("u are gone");
+        document.getElementById("demo").innerHTML=advice;
+        document.getElementById("note").innerHTML=note
         }
+        
 </script>
 
     </body>
@@ -185,7 +209,9 @@
       padding: 0;
       box-sizing: border-box;
   }
-  
+  html{
+    scroll-behavior: smooth;
+  }
   .logo{
       width: 20%;
       display: flex;
@@ -287,7 +313,8 @@
         margin-left: 30px;
         margin-top: 3px;
     }
-    #para{color:white;}
+    #para{color:white;
+    }
     
 .content{
     background-position: center;
@@ -323,6 +350,37 @@
   background-color: white;
   height: 4px;
   margin: 5px 3px;
+}
+.advi{
+    color:blanchedalmond;
+    font-family:cursive;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+}
+.dheading{
+    font-size: 40px;
+    padding: 30px;
+}
+.note{
+    font-size: 35px;
+    padding: 30px;
+
+}
+.advice{
+    font-size: 23px;
+    padding: 30px;
+
+}
+.conclusion{
+    font-size: 20px;
+    padding: 30px;
+
+}
+.final{
+    color: black;
 }
 
 @media only screen and (max-width: 1205px){
